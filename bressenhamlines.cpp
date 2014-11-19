@@ -1,0 +1,177 @@
+#include<iostream>
+#include<GL/gl.h>
+#include<GL/glut.h>
+#include<math.h>
+#include<stdlib.h>
+float x1,yl,x2,y2;
+void myInit()
+{
+    glClearColor(1.0,1.0,1.0,0.0);
+    glColor3f(0.0f,0.0f,0.0f);
+    glPointSize(1);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(0.0,640.0,0.0,480.0);
+}
+void myBressenham()
+{
+    float dx,dy;
+    float m,x,y,xend,p,yend;
+    m=(y2-yl)/(x2-x1);
+    dx=abs(x2-x1);
+    dy=abs(y2-yl);
+    std::cout<<m;
+
+    if(m>=0&&m<=1)
+    {
+        if(x1<x2)
+        {
+            xend=x2;
+            x=x1;
+            y=yl;
+        }
+        else
+        {
+            xend=x1;
+            x=x2;
+            y=y2;
+        }
+        glVertex2d(x,y);
+        p=(2*dy)-dx;
+        while(x<=xend)
+        {
+           if(p<0)
+           {
+             p=p+(2*dy);
+             x=x+1;
+           }
+           else
+           {
+                p=p+(2*dy)-(2*dx);
+                x=x+1;
+                y=y+1;
+           }
+           glVertex2d(x,y);
+        }
+    }
+
+     else if(m>1)
+    {
+        if(yl<y2)
+        {
+            yend=y2;
+            x=x1;
+            y=yl;
+        }
+        else
+        {
+            yend=yl;
+            x=x2;
+            y=y2;
+        }
+        glVertex2d(x,y);
+        p=(2*dx)-dy;
+        while(y<=yend)
+        {
+           if(p<0)
+           {
+             p=p+(2*dx);
+             y=y+1;
+           }
+           else
+           {
+                p=p+(2*dx)-(2*dy);
+                x=x+1;
+                y=y+1;
+           }
+           glVertex2d(x,y);
+        }
+    }
+
+     else if(m<0&&m>=-1)
+    {
+        if(x1<x2)
+        {
+            xend=x2;
+            x=x1;
+            y=yl;
+        }
+        else
+        {
+            xend=x1;
+            x=x2;
+            y=y2;
+        }
+        glVertex2d(x,y);
+        p=(2*dy)-dx;
+        while(x<=xend)
+        {
+           if(p<0)
+           {
+             p=p+(2*dy);
+             x=x+1;
+           }
+           else
+           {
+                p=p+(2*dy)-(2*dx);
+                x=x+1;
+                y=y-1;
+           }
+           glVertex2d(x,y);
+        }
+    }
+
+     else if(m<-1)
+    {
+        if(yl<y2)
+        {
+            yend=y2;
+            x=x1;
+            y=yl;
+        }
+        else
+        {
+            yend=yl;
+            x=x2;
+            y=y2;
+        }
+        glVertex2d(x,y);
+        p=(2*dx)-dy;
+        while(y<=yend)
+        {
+           if(p<0)
+           {
+             p=p+(2*dx);
+             y=y+1;
+           }
+           else
+           {
+                p=p+(2*dx)-(2*dy);
+                x=x-1;
+                y=y+1;
+           }
+           glVertex2d(x,y);
+        }
+}
+}
+void myDisplay()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_POINTS);
+    myBressenham();
+    glEnd();
+    glFlush();
+}
+int main(int argc , char* argv[])
+{
+    std::cout<<"\nenter the start and end coordinates:\n";
+    std::cin>>x1>>yl>>x2>>y2;
+    glutInit(&argc,argv);
+    glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+    glutInitWindowSize(640,480);
+    glutCreateWindow("sample");
+    glutDisplayFunc(myDisplay);
+    myInit();
+    glutMainLoop();
+    return 1;
+}
