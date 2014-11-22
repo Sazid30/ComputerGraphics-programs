@@ -1,0 +1,40 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--global',
+1 verbose cli   'javascripting' ]
+2 info using npm@1.1.71
+3 info using node@v0.8.18
+4 verbose node symlink /usr/local/bin/node
+5 verbose read json /usr/local/lib/package.json
+6 verbose read json /usr/local/lib/package.json
+7 verbose cache add [ 'javascripting', null ]
+8 silly cache add name=undefined spec="javascripting" args=["javascripting",null]
+9 verbose parsed url { pathname: 'javascripting',
+9 verbose parsed url   path: 'javascripting',
+9 verbose parsed url   href: 'javascripting' }
+10 silly lockFile ae6d31f2-javascripting javascripting
+11 verbose lock javascripting /Users/shiv/.npm/ae6d31f2-javascripting.lock
+12 silly lockFile ae6d31f2-javascripting javascripting
+13 verbose addNamed [ 'javascripting', '' ]
+14 verbose addNamed [ null, '' ]
+15 silly lockFile 9ef866d8-javascripting javascripting@
+16 verbose lock javascripting@ /Users/shiv/.npm/9ef866d8-javascripting.lock
+17 silly lockFile 9ef866d8-javascripting javascripting@
+18 error Error: EACCES, open '/Users/shiv/.npm/9ef866d8-javascripting.lock'
+18 error  { [Error: EACCES, open '/Users/shiv/.npm/9ef866d8-javascripting.lock']
+18 error   errno: 3,
+18 error   code: 'EACCES',
+18 error   path: '/Users/shiv/.npm/9ef866d8-javascripting.lock' }
+19 error Please try running this command again as root/Administrator.
+20 error System Darwin 14.0.0
+21 error command "node" "/usr/local/bin/npm" "install" "--global" "javascripting"
+22 error cwd /Users/shiv/Documents/SSN/sem7/ComputerGraphics_lab/cgprograms_git
+23 error node -v v0.8.18
+24 error npm -v 1.1.71
+25 error path /Users/shiv/.npm/9ef866d8-javascripting.lock
+26 error code EACCES
+27 error errno 3
+28 error stack Error: EACCES, open '/Users/shiv/.npm/9ef866d8-javascripting.lock'
+29 verbose exit [ 3, true ]
